@@ -1,8 +1,11 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Heart } from 'lucide-react';
 import { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { Product } from './Shop';
+import { QuickAddModal } from './QuickAddModal';
 
-const products = [
+const products: Product[] = [
   {
     id: 1,
     name: 'Obsidian Bralette',
@@ -37,7 +40,15 @@ const products = [
   },
 ];
 
-function ProductCard({ product, index }: { product: typeof products[0]; index: number }) {
+function ProductCard({ 
+  product, 
+  index,
+  onQuickAdd 
+}: { 
+  product: Product; 
+  index: number;
+  onQuickAdd: (product: Product) => void;
+}) {
   const [isFavorite, setIsFavorite] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   
@@ -56,7 +67,7 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
       style={{ opacity, scale }}
       className="group"
     >
-      <div className="relative overflow-hidden aspect-[3/4] mb-6 bg-white/5">
+      <div className="relative overflow-hidden aspect-[3/4] mb-6 bg-foreground/5">
         <motion.img
           src={product.image}
           alt={product.name}
@@ -67,13 +78,13 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
         {/* Tag */}
         {product.tag && (
           <motion.div 
-            className="absolute top-6 left-6 border border-white/20 backdrop-blur-sm bg-black/40 px-4 py-2"
+            className="absolute top-6 left-6 border border-border backdrop-blur-sm bg-black/60 dark:bg-background/40 px-4 py-2"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
           >
-            <span className="text-[10px] tracking-[0.3em] text-white/80">
+            <span className="text-[10px] tracking-[0.3em] text-white dark:text-foreground/80">
               {product.tag}
             </span>
           </motion.div>
@@ -82,7 +93,7 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
         {/* Favorite Button */}
         <motion.button
           onClick={() => setIsFavorite(!isFavorite)}
-          className="absolute top-6 right-6 w-12 h-12 border border-white/20 backdrop-blur-sm bg-black/40 flex items-center justify-center"
+          className="absolute top-6 right-6 w-12 h-12 border border-border backdrop-blur-sm bg-black/60 dark:bg-background/40 flex items-center justify-center hover:bg-white/20 dark:hover:bg-foreground/10 transition-colors"
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -95,17 +106,31 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
             strokeWidth={1.5}
             className={`transition-all duration-300 ${
               isFavorite
-                ? 'fill-white stroke-white'
-                : 'stroke-white/60'
+                ? 'fill-white stroke-white dark:fill-foreground dark:stroke-foreground'
+                : 'stroke-white/80 dark:stroke-foreground/60'
             }`}
           />
         </motion.button>
         
         {/* Quick Add Overlay */}
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <button className="border border-white/40 text-white px-8 py-4 tracking-[0.3em] text-xs hover:bg-white hover:text-black transition-all duration-300">
+        <div className="absolute inset-0 bg-black/40 dark:bg-background/60 backdrop-blur-sm flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <motion.button
+            onClick={() => onQuickAdd(product)}
+            className="border border-border text-foreground px-8 py-4 tracking-[0.3em] text-xs hover:bg-foreground hover:text-background transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             QUICK ADD
-          </button>
+          </motion.button>
+          <Link to={`/product/${product.id}`}>
+            <motion.button
+              className="bg-foreground text-background px-8 py-4 tracking-[0.3em] text-xs hover:bg-foreground/90 transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              VIEW DETAILS
+            </motion.button>
+          </Link>
         </div>
       </div>
       
@@ -116,15 +141,28 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
       >
-        <p className="text-[10px] tracking-[0.4em] text-white/40 uppercase">
+        <p className="text-[10px] tracking-[0.4em] text-foreground/40 uppercase">
           {product.collection}
         </p>
-        <h3 className="text-lg tracking-tight text-white/90">
-          {product.name}
-        </h3>
-        <p className="text-sm text-white/60 tracking-wider">
-          ${product.price}
-        </p>
+        <Link to={`/product/${product.id}`} className="hover:opacity-80 transition-opacity">
+          <h3 className="text-lg tracking-tight text-foreground/90">
+            {product.name}
+          </h3>
+        </Link>
+        <div className="flex items-center justify-between">
+          <p className="text-sm text-foreground/60 tracking-wider">
+            ${product.price}
+          </p>
+          <Link to={`/product/${product.id}`}>
+            <motion.button
+              className="border border-border text-foreground px-4 py-2 text-xs tracking-[0.2em] hover:bg-foreground hover:text-background transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              BUY NOW
+            </motion.button>
+          </Link>
+        </div>
       </motion.div>
     </motion.div>
   );
@@ -139,8 +177,22 @@ export function FeaturedProducts() {
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
 
+  // Quick Add Modal State
+  const [quickAddProduct, setQuickAddProduct] = useState<Product | null>(null);
+  const [isQuickAddOpen, setIsQuickAddOpen] = useState(false);
+
+  const handleQuickAdd = (product: Product) => {
+    setQuickAddProduct(product);
+    setIsQuickAddOpen(true);
+  };
+
+  const handleAddToCart = (product: Product, quantity: number, size: string) => {
+    // TODO: Implement cart functionality
+    console.log('Add to cart:', { product, quantity, size });
+  };
+
   return (
-    <section id="new" className="relative py-40 bg-black overflow-hidden" ref={sectionRef}>
+    <section id="new" className="relative py-40 bg-background overflow-hidden" ref={sectionRef}>
       {/* Animated Background Element */}
       <motion.div
         className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/[0.02] to-transparent pointer-events-none"
@@ -156,7 +208,7 @@ export function FeaturedProducts() {
           className="mb-32"
         >
           <motion.p 
-            className="text-[10px] tracking-[0.5em] uppercase mb-6 text-white/40"
+            className="text-[10px] tracking-[0.5em] uppercase mb-6 text-foreground/40"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -165,7 +217,7 @@ export function FeaturedProducts() {
             Latest Arrivals
           </motion.p>
           <motion.h2 
-            className="text-6xl md:text-8xl tracking-tighter text-white"
+            className="text-6xl md:text-8xl tracking-tighter text-foreground"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -177,10 +229,24 @@ export function FeaturedProducts() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((product, index) => (
-            <ProductCard key={product.id} product={product} index={index} />
+            <ProductCard 
+              key={product.id} 
+              product={product} 
+              index={index}
+              onQuickAdd={handleQuickAdd}
+            />
           ))}
         </div>
       </div>
+      <QuickAddModal
+        product={quickAddProduct}
+        isOpen={isQuickAddOpen}
+        onClose={() => {
+          setIsQuickAddOpen(false);
+          setQuickAddProduct(null);
+        }}
+        onAddToCart={handleAddToCart}
+      />
     </section>
   );
 }

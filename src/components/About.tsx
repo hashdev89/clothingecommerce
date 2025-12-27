@@ -23,7 +23,7 @@ export function About() {
   const lineScale = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1]);
 
   return (
-    <section id="about" className="relative py-40 bg-black overflow-hidden" ref={containerRef}>
+    <section id="about" className="relative py-40 bg-background overflow-hidden" ref={containerRef}>
       <div className="max-w-[1800px] mx-auto px-8 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
           {/* Content */}
@@ -32,7 +32,7 @@ export function About() {
             style={{ y: contentY }}
           >
             <motion.p 
-              className="text-[10px] tracking-[0.5em] uppercase mb-8 text-white/40"
+              className="text-[10px] tracking-[0.5em] uppercase mb-8 text-foreground/40"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -41,7 +41,7 @@ export function About() {
               Philosophy
             </motion.p>
             <motion.h2 
-              className="text-5xl md:text-7xl tracking-tighter mb-12 text-white"
+              className="text-5xl md:text-7xl tracking-tighter mb-12 text-foreground"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -49,11 +49,11 @@ export function About() {
             >
               The Art of
               <br />
-              <span className="text-white/30">Intimacy</span>
+              <span className="text-foreground/30">Intimacy</span>
             </motion.h2>
             
             <motion.div 
-              className="space-y-8 text-base text-white/60 tracking-wide leading-relaxed"
+              className="space-y-8 text-base text-foreground/60 tracking-wide leading-relaxed"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -91,7 +91,7 @@ export function About() {
             </motion.div>
             
             <motion.button
-              className="mt-16 border border-white/20 text-white px-12 py-5 tracking-[0.3em] text-xs relative overflow-hidden group"
+              className="mt-16 border border-border text-foreground px-12 py-5 tracking-[0.3em] text-xs relative overflow-hidden group"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -100,13 +100,13 @@ export function About() {
               whileTap={{ scale: 0.98 }}
             >
               <motion.div
-                className="absolute inset-0 bg-white"
+                className="absolute inset-0 bg-foreground"
                 initial={{ scaleX: 0 }}
                 whileHover={{ scaleX: 1 }}
                 transition={{ duration: 0.4 }}
                 style={{ originX: 0 }}
               />
-              <span className="relative z-10 group-hover:text-black transition-colors duration-300">
+              <span className="relative z-10 group-hover:text-background transition-colors duration-300">
                 OUR STORY
               </span>
             </motion.button>
@@ -116,7 +116,7 @@ export function About() {
           <div className="relative h-[600px]">
             <motion.div
               ref={image1Ref}
-              className="absolute top-0 left-0 w-1/2 h-2/3 overflow-hidden bg-white/5"
+              className="absolute top-0 left-0 w-1/2 h-2/3 overflow-hidden bg-foreground/5"
               style={{ y: y1 }}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -134,7 +134,7 @@ export function About() {
             
             <motion.div
               ref={image2Ref}
-              className="absolute bottom-0 right-0 w-3/5 h-3/4 overflow-hidden bg-white/5"
+              className="absolute bottom-0 right-0 w-3/5 h-3/4 overflow-hidden bg-foreground/5"
               style={{ y: y2 }}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -152,7 +152,7 @@ export function About() {
             
             {/* Decorative Line */}
             <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-px h-full bg-gradient-to-b from-transparent via-foreground/10 to-transparent"
               style={{ scaleY: lineScale }}
             />
           </div>

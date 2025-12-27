@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 
 export function Footer() {
   return (
-    <footer id="contact" className="bg-black border-t border-white/5 py-24 overflow-hidden">
+    <footer id="contact" className="bg-background border-t border-border py-24 overflow-hidden">
       <div className="max-w-[1800px] mx-auto px-8 lg:px-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-24">
           {/* Brand */}
@@ -14,8 +14,8 @@ export function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h3 className="text-xl tracking-[0.4em] text-white/90 mb-8">NOCTIS</h3>
-            <p className="text-sm text-white/40 leading-relaxed tracking-wide max-w-xs">
+            <h3 className="text-xl tracking-[0.4em] text-foreground/90 mb-8">NOCTIS</h3>
+            <p className="text-sm text-foreground/40 leading-relaxed tracking-wide max-w-xs">
               Redefining intimate luxury through timeless design and uncompromising
               craftsmanship
             </p>
@@ -29,27 +29,27 @@ export function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <h4 className="mb-8 tracking-[0.3em] text-[10px] text-white/40 uppercase">
+            <h4 className="mb-8 tracking-[0.3em] text-[10px] text-foreground/40 uppercase">
               Shop
             </h4>
-            <ul className="space-y-4 text-sm text-white/60">
+            <ul className="space-y-4 text-sm text-foreground/60">
               <li>
-                <a href="#" className="hover:text-white transition-colors tracking-wide">
+                <a href="#" className="hover:text-foreground transition-colors tracking-wide">
                   New Arrivals
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors tracking-wide">
+                <a href="#" className="hover:text-foreground transition-colors tracking-wide">
                   Collections
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors tracking-wide">
+                <a href="#" className="hover:text-foreground transition-colors tracking-wide">
                   Bestsellers
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors tracking-wide">
+                <a href="#" className="hover:text-foreground transition-colors tracking-wide">
                   Gift Cards
                 </a>
               </li>
@@ -64,27 +64,27 @@ export function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h4 className="mb-8 tracking-[0.3em] text-[10px] text-white/40 uppercase">
+            <h4 className="mb-8 tracking-[0.3em] text-[10px] text-foreground/40 uppercase">
               Support
             </h4>
-            <ul className="space-y-4 text-sm text-white/60">
+            <ul className="space-y-4 text-sm text-foreground/60">
               <li>
-                <a href="#" className="hover:text-white transition-colors tracking-wide">
+                <a href="#" className="hover:text-foreground transition-colors tracking-wide">
                   Size Guide
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors tracking-wide">
+                <a href="#" className="hover:text-foreground transition-colors tracking-wide">
                   Shipping
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors tracking-wide">
+                <a href="#" className="hover:text-foreground transition-colors tracking-wide">
                   Returns
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors tracking-wide">
+                <a href="#" className="hover:text-foreground transition-colors tracking-wide">
                   Contact
                 </a>
               </li>
@@ -99,27 +99,27 @@ export function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <h4 className="mb-8 tracking-[0.3em] text-[10px] text-white/40 uppercase">
+            <h4 className="mb-8 tracking-[0.3em] text-[10px] text-foreground/40 uppercase">
               Company
             </h4>
-            <ul className="space-y-4 text-sm text-white/60">
+            <ul className="space-y-4 text-sm text-foreground/60">
               <li>
-                <a href="#" className="hover:text-white transition-colors tracking-wide">
+                <a href="#" className="hover:text-foreground transition-colors tracking-wide">
                   Our Story
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors tracking-wide">
+                <a href="#" className="hover:text-foreground transition-colors tracking-wide">
                   Sustainability
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors tracking-wide">
+                <a href="#" className="hover:text-foreground transition-colors tracking-wide">
                   Careers
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors tracking-wide">
+                <a href="#" className="hover:text-foreground transition-colors tracking-wide">
                   Press
                 </a>
               </li>
@@ -134,41 +134,41 @@ export function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <h4 className="mb-8 tracking-[0.3em] text-[10px] text-white/40 uppercase">
+            <h4 className="mb-8 tracking-[0.3em] text-[10px] text-foreground/40 uppercase">
               Connect
             </h4>
             <div className="flex items-center gap-4 mb-6">
               <motion.a
                 href="#"
-                className="w-10 h-10 border border-white/20 flex items-center justify-center hover:border-white/40 hover:bg-white/5 transition-all"
+                className="w-10 h-10 border border-border flex items-center justify-center hover:border-foreground/40 hover:bg-foreground/5 transition-all"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Instagram size={16} strokeWidth={1.5} className="text-white/60" />
+                <Instagram size={16} strokeWidth={1.5} className="text-foreground/60 hover:text-foreground transition-colors" />
               </motion.a>
               <motion.a
                 href="#"
-                className="w-10 h-10 border border-white/20 flex items-center justify-center hover:border-white/40 hover:bg-white/5 transition-all"
+                className="w-10 h-10 border border-border flex items-center justify-center hover:border-foreground/40 hover:bg-foreground/5 transition-all"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Facebook size={16} strokeWidth={1.5} className="text-white/60" />
+                <Facebook size={16} strokeWidth={1.5} className="text-foreground/60 hover:text-foreground transition-colors" />
               </motion.a>
               <motion.a
                 href="#"
-                className="w-10 h-10 border border-white/20 flex items-center justify-center hover:border-white/40 hover:bg-white/5 transition-all"
+                className="w-10 h-10 border border-border flex items-center justify-center hover:border-foreground/40 hover:bg-foreground/5 transition-all"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Twitter size={16} strokeWidth={1.5} className="text-white/60" />
+                <Twitter size={16} strokeWidth={1.5} className="text-foreground/60 hover:text-foreground transition-colors" />
               </motion.a>
               <motion.a
                 href="#"
-                className="w-10 h-10 border border-white/20 flex items-center justify-center hover:border-white/40 hover:bg-white/5 transition-all"
+                className="w-10 h-10 border border-border flex items-center justify-center hover:border-foreground/40 hover:bg-foreground/5 transition-all"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Mail size={16} strokeWidth={1.5} className="text-white/60" />
+                <Mail size={16} strokeWidth={1.5} className="text-foreground/60 hover:text-foreground transition-colors" />
               </motion.a>
             </div>
           </motion.div>
@@ -176,17 +176,17 @@ export function Footer() {
 
         {/* Bottom */}
         <motion.div 
-          className="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6"
+          className="border-t border-border pt-10 flex flex-col md:flex-row justify-between items-center gap-6"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <p className="text-xs text-white/30 tracking-wider">
+          <p className="text-xs text-foreground/30 tracking-wider">
             © 2025 NOCTIS. ALL RIGHTS RESERVED.
           </p>
-          <div className="flex items-center gap-8 text-xs text-white/30">
-            <a href="#" className="hover:text-white/60 transition-colors tracking-wide">
+          <div className="flex items-center gap-8 text-xs text-foreground/30">
+            <a href="#" className="hover:text-foreground/60 transition-colors tracking-wide">
               Privacy Policy
             </a>
             <a href="#" className="hover:text-white/60 transition-colors tracking-wide">

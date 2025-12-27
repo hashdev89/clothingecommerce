@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Hero } from './components/Hero';
 import { Navigation } from './components/Navigation';
-import { Collections } from './components/Collections';
-import { FeaturedProducts } from './components/FeaturedProducts';
-import { About } from './components/About';
-import { Testimonials } from './components/Testimonials';
-import { Newsletter } from './components/Newsletter';
-import { Footer } from './components/Footer';
+import { Home } from './components/Home';
+import { Shop } from './components/Shop';
+import { ProductDetail } from './components/ProductDetail';
 import { Cursor } from './components/Cursor';
+import { ThemeProvider } from './components/ThemeProvider';
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -22,16 +21,23 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black">
-      <Cursor />
-      <Navigation scrolled={scrolled} />
-      <Hero />
-      <Collections />
-      <FeaturedProducts />
-      <About />
-      <Testimonials />
-      <Newsletter />
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <BrowserRouter>
+        <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+          <Cursor />
+          <Navigation scrolled={scrolled} />
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero />
+                <Home />
+              </>
+            } />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }

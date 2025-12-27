@@ -42,7 +42,7 @@ function CollectionCard({ collection, index }: { collection: typeof collections[
       style={{ opacity, scale }}
       className="group cursor-pointer"
     >
-      <div className="relative overflow-hidden aspect-[3/4] mb-8 bg-white/5">
+      <div className="relative overflow-hidden aspect-[3/4] mb-8 bg-foreground/5">
         <motion.img
           src={collection.image}
           alt={collection.title}
@@ -52,13 +52,13 @@ function CollectionCard({ collection, index }: { collection: typeof collections[
           transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.9] }}
         />
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         />
         
         {/* Overlay Content */}
         <div className="absolute bottom-0 left-0 right-0 p-8 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-          <div className="h-px w-12 bg-white/40 mb-4" />
-          <p className="text-xs tracking-[0.3em] text-white/60 uppercase">
+          <div className="h-px w-12 bg-foreground/40 mb-4" />
+          <p className="text-xs tracking-[0.3em] text-foreground/60 uppercase">
             Explore Collection
           </p>
         </div>
@@ -71,13 +71,13 @@ function CollectionCard({ collection, index }: { collection: typeof collections[
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
       >
-        <p className="text-[10px] tracking-[0.4em] text-white/40 uppercase">
+        <p className="text-[10px] tracking-[0.4em] text-foreground/40 uppercase">
           {collection.subtitle}
         </p>
-        <h3 className="text-2xl tracking-tight text-white">
+        <h3 className="text-2xl tracking-tight text-foreground">
           {collection.title}
         </h3>
-        <p className="text-sm text-white/60 tracking-wide">
+        <p className="text-sm text-foreground/60 tracking-wide">
           {collection.description}
         </p>
       </motion.div>
@@ -96,10 +96,10 @@ export function Collections() {
   const backgroundOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.02, 0.05, 0.02]);
 
   return (
-    <section id="collections" className="relative py-40 bg-black overflow-hidden" ref={containerRef}>
+    <section id="collections" className="relative py-40 bg-background overflow-hidden" ref={containerRef}>
       {/* Background Text */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] text-white pointer-events-none whitespace-nowrap"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] text-foreground pointer-events-none whitespace-nowrap"
         style={{ y, opacity: backgroundOpacity }}
       >
         COLLECTIONS
@@ -114,7 +114,7 @@ export function Collections() {
           className="mb-32"
         >
           <motion.p 
-            className="text-[10px] tracking-[0.5em] uppercase mb-6 text-white/40"
+            className="text-[10px] tracking-[0.5em] uppercase mb-6 text-foreground/40"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -123,7 +123,7 @@ export function Collections() {
             Curated Collections
           </motion.p>
           <motion.h2 
-            className="text-6xl md:text-8xl tracking-tighter text-white max-w-4xl"
+            className="text-6xl md:text-8xl tracking-tighter text-foreground max-w-4xl"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -131,7 +131,7 @@ export function Collections() {
           >
             Crafted for the
             <br />
-            <span className="text-white/30">Connoisseur</span>
+            <span className="text-foreground/30">Connoisseur</span>
           </motion.h2>
         </motion.div>
 

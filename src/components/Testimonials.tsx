@@ -41,7 +41,7 @@ function TestimonialCard({ testimonial, index }: { testimonial: typeof testimoni
       className="group"
     >
       <motion.div
-        className="border border-white/10 p-10 hover:border-white/20 transition-all duration-500 bg-white/[0.02] hover:bg-white/[0.04]"
+        className="border border-border p-10 hover:border-foreground/20 transition-all duration-500 bg-foreground/[0.02] hover:bg-foreground/[0.04]"
         whileHover={{ y: -10 }}
         transition={{ duration: 0.4 }}
       >
@@ -51,11 +51,11 @@ function TestimonialCard({ testimonial, index }: { testimonial: typeof testimoni
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: index * 0.2 }}
         >
-          <Quote size={32} strokeWidth={1} className="text-white/20 mb-8" />
+          <Quote size={32} strokeWidth={1} className="text-foreground/20 mb-8" />
         </motion.div>
         
         <motion.p 
-          className="text-lg text-white/80 mb-8 leading-relaxed tracking-wide italic"
+          className="text-lg text-foreground/80 mb-8 leading-relaxed tracking-wide italic"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -69,7 +69,7 @@ function TestimonialCard({ testimonial, index }: { testimonial: typeof testimoni
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
-          className="h-px w-12 bg-white/20 mb-6"
+          className="h-px w-12 bg-foreground/20 mb-6"
           style={{ originX: 0 }}
         />
         
@@ -79,10 +79,10 @@ function TestimonialCard({ testimonial, index }: { testimonial: typeof testimoni
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: index * 0.2 + 0.4 }}
         >
-          <p className="text-sm text-white/90 tracking-wide mb-1">
+          <p className="text-sm text-foreground/90 tracking-wide mb-1">
             {testimonial.author}
           </p>
-          <p className="text-xs text-white/40 tracking-wider uppercase">
+          <p className="text-xs text-foreground/40 tracking-wider uppercase">
             {testimonial.role}
           </p>
         </motion.div>
@@ -101,7 +101,7 @@ export function Testimonials() {
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
 
   return (
-    <section className="relative py-40 bg-black border-y border-white/5 overflow-hidden" ref={sectionRef}>
+    <section className="relative py-40 bg-background border-y border-border overflow-hidden" ref={sectionRef}>
       {/* Animated Background */}
       <motion.div
         className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-white/[0.02] to-transparent pointer-events-none"
@@ -117,7 +117,7 @@ export function Testimonials() {
           className="mb-32"
         >
           <motion.p 
-            className="text-[10px] tracking-[0.5em] uppercase mb-6 text-white/40"
+            className="text-[10px] tracking-[0.5em] uppercase mb-6 text-foreground/40"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -126,7 +126,7 @@ export function Testimonials() {
             Testimonials
           </motion.p>
           <motion.h2 
-            className="text-6xl md:text-8xl tracking-tighter text-white"
+            className="text-6xl md:text-8xl tracking-tighter text-foreground"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -134,7 +134,7 @@ export function Testimonials() {
           >
             Voices of
             <br />
-            <span className="text-white/30">Elegance</span>
+            <span className="text-foreground/30">Elegance</span>
           </motion.h2>
         </motion.div>
 
